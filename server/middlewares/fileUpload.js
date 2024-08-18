@@ -9,15 +9,15 @@ dotenv.config();
 
 const s3 = new S3Client({
   credentials: {
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   },
   region: "eu-north-1",
 });
 
 const storage = multerS3({
   s3: s3,
-  bucket: process.env.AWSS3_BUCKET_NAME,
+  bucket: process.env.AWS_S3_BUCKET_NAME,
   contentType: multerS3.AUTO_CONTENT_TYPE,
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
