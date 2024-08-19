@@ -603,7 +603,10 @@ export const updateCoverImage = async (req, res) => {
 // Get All User
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await userModel.find({}).select("-password");
+    const users = await userModel
+      .find({})
+      .select("-password")
+      .sort({ createdAt: -1 });
 
     res.status(200).send({
       success: true,
@@ -693,6 +696,28 @@ export const uploadFile = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Error in upload file controller!",
+      error: error,
+    });
+  }
+};
+
+// Get Contact List with required Data
+export const getContactList = async (req, res) => {
+  try {
+    const users = await userModel
+      .find({})
+      .select("_id firstName lastName email profilePicture")
+      .sort({ createdAt: -1 });
+
+    res.status(200).send({
+      success: true,
+      users: users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in get all user controller!",
       error: error,
     });
   }

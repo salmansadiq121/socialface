@@ -3,6 +3,7 @@ import {
   deleteUser,
   editRole,
   getAllUsers,
+  getContactList,
   getSingleUser,
   lockProfile,
   loginUser,
@@ -64,4 +65,8 @@ router.delete("/delete/users/:id", deleteUser);
 
 // Upload file
 router.post("/upload/file", uploadMiddleware, uploadFile);
+
+// Get All Contacts with required Data
+router.get("/all/contactlist", getContactList);
+
 export default router;

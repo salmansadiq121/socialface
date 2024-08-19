@@ -82,57 +82,24 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    photos: [
-      {
-        url: {
-          type: String,
-          required: true,
-        },
-        caption: {
-          type: String,
-          default: "",
-          trim: true,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
-    videos: [
-      {
-        url: {
-          type: String,
-          required: true,
-        },
-        caption: {
-          type: String,
-          default: "",
-          trim: true,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
-    reels: [
-      {
-        url: {
-          type: String,
-          required: true,
-        },
-        caption: {
-          type: String,
-          default: "",
-          trim: true,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
+    // photos: [
+    //   {
+    //     url: {
+    //       type: String,
+    //       required: true,
+    //     },
+    //     caption: {
+    //       type: String,
+    //       default: "",
+    //       trim: true,
+    //     },
+    //     createdAt: {
+    //       type: Date,
+    //       default: Date.now,
+    //     },
+    //   },
+    // ],
+
     stories: [
       {
         url: {
@@ -180,8 +147,6 @@ const userSchema = new mongoose.Schema(
         ref: "Post",
       },
     ],
-
-    friends: [],
     lockProfile: {
       type: Boolean,
       default: false,
