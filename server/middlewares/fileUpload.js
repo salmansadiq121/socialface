@@ -28,8 +28,8 @@ const storage = multerS3({
 });
 
 function checkFileType(file, cb) {
-  const fileTypes =
-    /jpg|jpeg|png|gif|pdf|doc|docx|xls|xlsx|ppt|pptx|txt|csv|mp3|mp4|mov|avi|wmv|mkv|flv|webm|ogg|wav|m4a|mpeg-4/;
+    const fileTypes =
+    /jpg|jpeg|png|gif|pdf|doc|docx|xls|xlsx|ppt|pptx|txt|csv|mp3|mp4|mov|mpeg-4/;
 
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
 
