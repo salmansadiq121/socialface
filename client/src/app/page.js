@@ -11,6 +11,7 @@ import axios from "axios";
 import Sponsored from "./components/user/Home/right/Sponsored";
 import ContactsList from "./components/user/Home/right/ContactsList";
 import FriendList from "./components/user/Home/right/FriendList";
+import HomeLeftSide from "./components/user/Home/Left/HomeLeftSide";
 
 export default function Home() {
   const { auth, isActive, setIsActive } = useAuth();
@@ -73,7 +74,7 @@ export default function Home() {
         <div class="flex flex-1">
           {/* <!-- Left Column --> */}
           <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/2  hidden lg:block">
-            {/* <div class="bg-gray-200 p-4 h-32">Left Content</div> */}
+            <HomeLeftSide />
           </div>
 
           {/* <!-- Center Column --> */}
@@ -96,13 +97,21 @@ export default function Home() {
           </div>
 
           {/* <!-- Right Column --> */}
-          <div class=" w-full md:w-1/2 lg:w-1/2 xl:w-1/2 hidden md:block px-2 sm:px-4 py-2">
+          <div class=" w-full md:w-1/2 lg:w-1/2 xl:w-1/2 hidden md:block px-2 py-2">
             <div className=" flex flex-col gap-4 w-full  h-screen overflow-y-auto">
               <Sponsored />
               {/* <hr className="w-full h-[1px] bg-gray-300 dark:bg-gray-800 my-1" /> */}
-              <FriendList friendsList={contactList} loadFriends={loadUsers} />
+              <FriendList
+                friendsList={contactList}
+                loadFriends={loadUsers}
+                getAllContactUsers={getAllUsers}
+              />
               {/* <hr className="w-full bg-gray-200 dark:bg-gray-800 my-1" /> */}
-              <ContactsList loadUsers={loadUsers} contactList={contactList} />
+              <ContactsList
+                loadUsers={loadUsers}
+                contactList={contactList}
+                getAllContactUsers={getAllUsers}
+              />
             </div>
           </div>
         </div>

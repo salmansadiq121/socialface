@@ -82,7 +82,7 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    // photos: [
+    // stories: [
     //   {
     //     url: {
     //       type: String,
@@ -100,24 +100,13 @@ const userSchema = new mongoose.Schema(
     //   },
     // ],
 
-    stories: [
+    followers: [
       {
-        url: {
-          type: String,
-          required: true,
-        },
-        caption: {
-          type: String,
-          default: "",
-          trim: true,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
       },
     ],
-    friends: [
+    following: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -129,18 +118,13 @@ const userSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
-    posts: [
+    sendFriendRequests: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
+        ref: "User",
       },
     ],
-    marketPlace: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "marketPlace",
-      },
-    ],
+
     likedPosts: [
       {
         type: mongoose.Schema.Types.ObjectId,

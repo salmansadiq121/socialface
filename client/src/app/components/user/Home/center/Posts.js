@@ -501,7 +501,7 @@ const Posts = ({ user, loading, posts, getAllPost }) => {
               </div>
               {/* video/image */}
               <div
-                className="relative w-full h-[19rem] bg-gray-100 dark:bg-gray-700 cursor-pointer"
+                className="relative w-full h-[22rem] bg-gray-100 dark:bg-gray-700 cursor-pointer"
                 onClick={() => router.push(`/postDetail/${post._id}`)}
               >
                 {post.mediaType === "Image" ? (

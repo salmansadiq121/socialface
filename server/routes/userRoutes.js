@@ -1,7 +1,10 @@
 import express from "express";
 import {
+  acceptFriendRequest,
+  cancelFriendRequest,
   deleteUser,
   editRole,
+  followUser,
   getAllUsers,
   getContactList,
   getSingleUser,
@@ -9,6 +12,8 @@ import {
   loginUser,
   registerUser,
   resetPassword,
+  sendFriendRequest,
+  unfollowUser,
   updateCoverImage,
   updatePassword,
   updateProfile,
@@ -18,6 +23,7 @@ import {
   verificationUser,
 } from "../controllers/userController.js";
 import uploadMiddleware from "../middlewares/fileUpload.js";
+import { requireSignIn } from "../middlewares/authMiddelware.js";
 
 const router = express.Router();
 
@@ -68,5 +74,20 @@ router.post("/upload/file", uploadMiddleware, uploadFile);
 
 // Get All Contacts with required Data
 router.get("/all/contactlist", getContactList);
+
+// Follow User
+router.put("/follow/user/:id", requireSignIn, followUser);
+
+// Unfollow User
+router.put("/unfollow/user/:id", requireSignIn, unfollowUser);
+
+// Send Friend Request
+router.put("/frient/request/:id", requireSignIn, sendFriendRequest);
+
+// Accept Friend Request
+router.put("/accept/friend/request/:id", requireSignIn, acceptFriendRequest);
+
+// Cancel Friend Request
+router.put("/cancel/friend/request/:id", requireSignIn, cancelFriendRequest);
 
 export default router;
